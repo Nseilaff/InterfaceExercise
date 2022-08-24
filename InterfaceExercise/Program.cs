@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace InterfaceExercise
 {
@@ -6,39 +7,61 @@ namespace InterfaceExercise
     {
         static void Main(string[] args)
         {
-            //TODO Be sure to follow BEST PRACTICES when creating classes and interfaces
 
-            //Create 2 Interfaces called IVehicle & ICompany
-
-            //Create 3 classes called Car , Truck , & SUV
-
-            //In your IVehicle
-            
-                /* Create 4 members that Car, Truck, & SUV all have in common.
-                 * Example: All vehicles have a number of wheels... for now..
-                 */
-            
-
-            //In ICompany
-            
-                /*Create 2 members that are specific to each every company
-                 * regardless of vehicle type.
-                 *
-                 *
-                 * Example: public string Logo { get; set; }
-                 */
-
-            //In each of your car, truck, and suv classes
-
-                /*Create 2 members that are specific to each class
-                 * Example: truck has a bed size while car has a trunk while suv has a cargo hold size
-                 *
-                 * Then, Set each class to inherit from both IVehicle and ICompany and implement their members.
-                 * 
-                 */
-
+            var newList = new List<IVehicle>();
             //Now, create objects of your 3 classes and give their members values;
+            var car1 = new Car()
+            {
+                wheels = 4,
+                doors = 2,
+                topSpeed = 194.6,
+                engineType = "w12",
+                isManual = true,
+                isSportsCar = true,
+                logo = "Nates Lot",
+                companyName = "Nates AutoTown"
+            };
+            var suv1 = new SUV()
+            {
+                wheels = 4,
+                doors = 4,
+                topSpeed = 100.4,
+                engineType = "v6",
+                cargoRoom = 12.6,
+                numOfSeats = 8,
+                logo = "Nates Lot",
+                companyName = "Nates AutoTown"
+            };
+            var truck1 = new Truck()
+            {
+                wheels = 6,
+                doors = 4,
+                topSpeed = 125.2,
+                engineType = "v8 deisel",
+                hasBed = "Short Bed",
+                has4x4 = false,
+                logo = "Nates Lot",
+                companyName = "Nates AutoTown"
+            };
             //Creatively display and organize their values
+            newList.Add(car1);
+            newList.Add(suv1);
+            newList.Add(truck1);
+
+            var newList1 = new List<ICompany>();
+            newList1.Add(car1);
+            newList1.Add(suv1);
+            newList1.Add(truck1);
+
+            foreach (var item in newList)
+            {
+                Console.WriteLine($"Wheels: {item.wheels} Doors: {item.doors},Engine Type:  {item.engineType}, Top Speed: {item.topSpeed}");
+
+            }
+            foreach (var xy in newList1)
+            {
+                Console.WriteLine($"{xy.logo}\n{xy.companyName}");
+            }
         }
     }
 }
